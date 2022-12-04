@@ -281,6 +281,9 @@ return [
 
         // Sidebar items:
         [
+            'text'        => 'artists',
+            'route'       => 'artists.index',
+            'icon'        => 'fas fa-fw fa-user-tie',
         ],
         [
         ],
