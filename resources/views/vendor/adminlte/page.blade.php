@@ -54,4 +54,19 @@
 @section('adminlte_js')
     @stack('js')
     @yield('js')
+
+    <script type="text/javascript">
+        @if (session()->has('success'))
+            $(document).ready(function () {
+             Swal.fire({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    title: "{{ session()->get('success') }}",
+                    timer: 2500,
+                    showConfirmButton: false,
+                })
+            })
+        @endif
+    </script>
 @stop
