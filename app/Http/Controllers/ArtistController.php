@@ -10,8 +10,7 @@ class ArtistController extends Controller
 {
     public function index() {
         return view('models.artists.index', [
-            'artists' => Artist::get(),
-            //withCount('albums')
+            'artists' => Artist::withCount('albums')->get(),
         ]);
     }
 
@@ -20,7 +19,7 @@ class ArtistController extends Controller
     }
 
     public function store(StoreRequest $request) {
-        Artist::create( $request->all() );
+        Artist::create( $request->validated() );
 
         return to_route('artists.index')->with('success', 'Artista creado');
     }
@@ -32,7 +31,7 @@ class ArtistController extends Controller
     }
 
     public function update(StoreRequest $request, Artist $artist) {
-        $artist->fill( $request->all() );
+        $artist->fill( $request->validated() );
 
         $artist->save();
 

@@ -286,6 +286,9 @@ return [
             'icon'        => 'fas fa-fw fa-user-tie',
         ],
         [
+            'text'        => 'albums',
+            'route'       => 'albums.index',
+            'icon'        => 'fas fa-fw fa-compact-disc',
         ],
         [
         ],
