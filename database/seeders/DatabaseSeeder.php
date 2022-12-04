@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Database\Seeders\AlbumSeeder;
 use Database\Seeders\ArtistSeeder;
+use Database\Seeders\SongSeeder;
 use Database\Seeders\UserSeeder;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\App;
@@ -29,6 +30,7 @@ class DatabaseSeeder extends Seeder
                 UserSeeder::class,
                 ArtistSeeder::class,
                 AlbumSeeder::class,
+                SongSeeder::class,
             ]);
         }
     }

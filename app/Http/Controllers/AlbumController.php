@@ -11,8 +11,7 @@ class AlbumController extends Controller
 {
     public function index() {
         return view('models.albums.index', [
-            'albums' => Album::with('artist')->get(),
-            // ->withCount('songs')
+            'albums' => Album::with('artist')->withCount('songs')->get(),
         ]);
     }
 

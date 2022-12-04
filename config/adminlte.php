@@ -291,6 +291,9 @@ return [
             'icon'        => 'fas fa-fw fa-compact-disc',
         ],
         [
+            'text'        => 'songs',
+            'route'       => 'songs.index',
+            'icon'        => 'fas fa-fw fa-music',
         ],
     ],
 
