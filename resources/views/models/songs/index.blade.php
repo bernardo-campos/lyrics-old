@@ -41,7 +41,7 @@
                                 <td>{{ $song->album->name }}</td>
                                 <td>{{ $song->name }}</td>
                                 <td>
-                                    <div class="song">{{ $song->lyric }}</div>
+                                    <div>{!! $song->lyric !!}</div>
                                 </td>
                                 <td class="d-flex">
                                     <a title="Editar" href="{{ route('songs.edit', $song) }}" class="btn btn-sm btn-warning py-0 px-1"><i class="fa fa-edit"></i></a>
@@ -74,11 +74,4 @@
         }
     });
 </script>
-@endpush
-@push('css')
-<style>
-    .song {
-        white-space: pre;
-    }
-</style>
 @endpush

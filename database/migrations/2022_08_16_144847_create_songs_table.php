@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->mediumText('lyric')->nullable();
             $table->timestamps();
+
+            $table->fulltext('lyric');
         });
     }
 
