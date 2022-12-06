@@ -5,13 +5,27 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Artist\StoreRequest;
 use App\Models\Artist;
 use Illuminate\Http\Request;
+use DataTables;
 
 class ArtistController extends Controller
 {
-    public function index() {
-        return view('models.artists.index', [
-            'artists' => Artist::withCount('albums')->get(),
-        ]);
+    public function index()
+    {
+        if (!request()->ajax()) {
+            return view('models.artists.index');
+        }
+
+        $query = Artist::query()
+            ->withCount('albums')
+        ;
+
+        return DataTables::eloquent($query)
+            ->addColumn('urls', fn(Artist $artist) => [
+                'edit' => route('artists.edit', $artist),
+                'destroy' => route('artists.destroy', $artist),
+            ])
+            ->make(true)
+        ;
     }
 
     public function create() {

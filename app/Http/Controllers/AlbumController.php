@@ -6,13 +6,27 @@ use App\Http\Requests\Album\StoreRequest;
 use App\Models\Album;
 use App\Models\Artist;
 use Illuminate\Http\Request;
+use DataTables;
 
 class AlbumController extends Controller
 {
-    public function index() {
-        return view('models.albums.index', [
-            'albums' => Album::with('artist')->withCount('songs')->get(),
-        ]);
+    public function index()
+    {
+        if (!request()->ajax()) {
+            return view('models.albums.index');
+        }
+
+        $query = Album::with('artist')
+            ->withCount('songs')
+        ;
+
+        return DataTables::eloquent($query)
+            ->addColumn('urls', fn(Album $album) => [
+                'edit' => route('albums.edit', $album),
+                'destroy' => route('albums.destroy', $album),
+            ])
+            ->make(true)
+        ;
     }
 
     public function create() {

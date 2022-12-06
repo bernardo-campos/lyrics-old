@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('artist_id')->constrained();
             $table->string('name');
-            $table->string('year', 4);
+            $table->string('year', 4)->nullable();
             $table->timestamps();
         });
     }
