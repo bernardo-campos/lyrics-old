@@ -19,7 +19,7 @@ class SongSeeder extends Seeder
 
     private function createLyric()
     {
-        return implode("\n", $this->faker->sentences(rand(10, 24)) );
+        return implode("\n<br>", $this->faker->sentences(rand(10, 24)) );
     }
     /**
      * Run the database seeds.
